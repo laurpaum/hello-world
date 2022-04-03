@@ -13,8 +13,8 @@ public class HelloResource {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String hello() {
-        Log.info("Reçu requête GET /hello version 1");
-        return "Hello from version 1";
+        Log.info("Reçu requête GET /hello version 2");
+        return "Hello from version 2";
     }
 
 }
