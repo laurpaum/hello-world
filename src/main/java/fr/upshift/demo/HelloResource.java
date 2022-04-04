@@ -9,6 +9,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.eclipse.microprofile.metrics.MetricUnits;
+import org.eclipse.microprofile.metrics.annotation.Counted;
+import org.eclipse.microprofile.metrics.annotation.Timed;
+
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 @Path("/hello")
@@ -20,9 +24,11 @@ public class HelloResource {
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
+    @Counted(name = "helloCount")
+    @Timed(name = "helloDuration", unit = MetricUnits.MILLISECONDS)
     public String hello() {
-        Log.info("Reçu requête GET /hello version 3");
-        return "Hello from version 3 - " + clockService.getTime().currentDateTime;
+        Log.info("Reçu requête GET /hello version 4");
+        return "Hello from version 4 - " + clockService.getTime().currentDateTime;
     }
 
 }
